@@ -1,0 +1,37 @@
+body{
+	margin:0;
+	padding:0;
+	background:#f6f9fb;
+}
+.div{
+	margin-top:40px;
+	margin-left:20%;
+	text-align:center;
+	width:60%;
+	background:white;
+	box-shadow: -15px 15px 5px #ebeeef;
+}
+.table{
+	width:100%;
+}
+.texttr{
+	height:60px;
+	font-size:50px;
+	font-family:华文彩云;
+	text-align:center;
+}
+.tr{
+	height:40px;
+	text-align:center;
+}
+#btn{
+	 background:#ff2832;
+	 color:white;
+	 border:hidden;
+	 border-radius:10px;
+	 font-size:50px;
+	 width:50%;
+	 height:80px;
+	 cursor:pointer;
+	 font-family:华文细黑;
+}

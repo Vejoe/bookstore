@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bookstore.product.model.Book" table="Book">
+		<id name="id" column="id" > <!-- 配置主键 -->
+			<generator class="native"/>
+		</id>
+		<!-- 配置其他属性 -->
+		<property name="bookname" length="30"/>
+		<property name="profile" length="500"/>
+		<property name="publisher" length="30"/>
+		<property name="publisher_year"/>
+		<property name="author" length="30"/>
+		<property name="price"/>
+		<property name="stocks"/>
+		<property name="rank_price"/>
+		<property name="bookdealmount"/>
+		<property name="booklookmount"/>
+		<property name="bookfilename" length="30"/>
+		<many-to-one name="booktype" class="com.bookstore.product.model.BookType" cascade="none" fetch="select" column="typeid" not-null="true" unique="true" lazy="false"></many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bookstore.shoppingcart.model.ShoppingCartInfo" table="ShoppingCartInfo">
+	<!-- 配置主键 -->
+	<id name="id" column="id">
+		<generator class="native"/>
+	</id>
+	<!-- 含有外键的一端  cartid是ShoppingCart类的id属性,对应是ShoppingCart持久化类-->
+	<many-to-one name="shoppingcart" class="com.bookstore.shoppingcart.model.ShoppingCart"
+		cascade="save-update" fetch="select" 
+	 column="cartid" not-null="false" lazy="false"/>
+	 
+	<property name="bookname" length="30"/>
+	
+	<property name="priceofonebook"/>
+	
+	<property name="price"/>
+	
+	<many-to-one name="book" class="com.bookstore.product.model.Book"
+		cascade="save-update" fetch="select"
+		column="bookid" not-null="false" lazy="false"/>
+		
+	<property name="ordermount"/>
+	
+	</class>
+	
+</hibernate-mapping>	

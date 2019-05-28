@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bookstore.shoppingcart.model.ShoppingCart" table="ShoppingCart">
+	<!-- 配置主键 -->
+	<id name="id" column="id">
+		<generator class="native"/>
+	</id>
+	<!-- 含有外键的一端  cid是Customer类的id属性,对应是Customer持久化类-->
+	<many-to-one name="customer" class="com.bookstore.customer.model.Customer"
+		    cascade="save-update" fetch="select" 
+		    column="cid" not-null="false" lazy="false"/>
+	
+	
+	<property name="allprice"/>	   
+	</class>
+	
+</hibernate-mapping>    

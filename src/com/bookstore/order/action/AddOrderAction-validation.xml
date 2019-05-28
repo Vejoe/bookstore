@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  "-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">paymethod</param>
+		<message>支付方式不能为空</message>
+	</validator>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">postmethod</param>
+		<message>快递方式不能为空</message>
+	</validator>
+</validators>

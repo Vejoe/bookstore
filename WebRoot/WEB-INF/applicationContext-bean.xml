@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           				http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+						 ">	
+	
+	
+	<aop:aspectj-autoproxy /> <!-- 启用@AspectJ配置 -->
+	<!-- product模块 -->
+	<bean id="productdaoImpl" class="com.bookstore.product.dao.hibernate.productDaoImpl">
+		<property name="sessionFactory"> <!-- UsersDao类中的sessionFactory属性 -->
+			<ref bean="sessionFactory"/> <!-- aplicationContext-common中的sessionFactory -->
+		</property>
+	</bean>
+	
+	<bean id="productserviceImpl" class="com.bookstore.product.service.impl.productServiceImpl">
+		<property name="productdao"> <!-- PowerDao类中的sessionFactory属性 -->
+			<ref bean="productdaoImpl"/> <!-- aplicationContext-common中的sessionFactory -->
+		</property>
+	</bean>
+	
+	<!-- CustomerDao的bean -->
+	<bean id="CustomerDao" class="com.bookstore.customer.dao.CustomerDao" autowire="byType"/>
+	<!-- ConsigneeDao的bean -->
+	<bean id="ConsigneeDao" class="com.bookstore.consignee.dao.ConsigneeDao" autowire="byType"/>
+	
+	<!-- Manager的bean -->
+	<bean id="managerDao" class="com.bookstore.manager.dao.hibernate.ManagerDaoImpl" autowire="byType" />
+	<bean id="managerService" class="com.bookstore.manager.service.impl.ManagerServiceImpl" autowire="byType"/>
+	
+	
+	<!-- addproduct_addcustomer的bean -->
+	<bean id="bd" class="com.bookstore.backgroundSys.bookM.dao.impl.BookDaoImpl" autowire="byType"></bean>
+	<bean id="cd" class="com.bookstore.backgroundSys.customerM.dao.impl.CustomerDaoImpl" autowire="byType"></bean>
+	
+	<!--  购物车bean-->
+	<bean id="ShoppingcartDao" class="com.bookstore.shoppingcart.dao.ShoppingCartDao" autowire="byType"/>
+	<!--  订单bean-->	
+	<bean id="OrderDao" class="com.bookstore.order.dao.OrderDao" autowire="byType"/>
+</beans>

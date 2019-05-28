@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  "-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">customer.caccount</param>
+		<message>用户账号不能为空</message>
+	</validator>
+	<validator type="stringlength" short-circuit="true">
+		<param name="fieldname">customer.caccount</param>
+		<param name="trim">true</param>
+		<param name="minLength">6</param>
+		<message>用户账号长度最少为6位</message>
+	</validator>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">customer.cname</param>
+		<message>用户名不能为空</message>
+	</validator>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">customer.password</param>
+		<message>登录密码不能为空</message>
+	</validator>
+	<validator type="stringlength" short-circuit="true">
+		<param name="fieldname">customer.password</param>
+		<param name="trim">true</param>
+		<param name="minLength">6</param>
+		<message>登录密码长度最少为6位</message>
+	</validator>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">password</param>
+		<message>确认密码不能为空</message>
+	</validator>
+	<validator type="fieldexpression" short-circuit="true">
+		<param name="fieldname">password</param>
+		<param name="expression"><![CDATA[customer.password==password]]></param>
+		<message>确认密码和登录密码不同</message>
+	</validator>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">customer.phone_num</param>
+		<message>手机号码不能为空</message>
+	</validator>
+	<validator type="email" short-circuit="true">
+		<param name="trim">true</param>
+		<param name="fieldname">customer.email</param>
+		<message>邮箱地址有误</message>
+	</validator>
+</validators>

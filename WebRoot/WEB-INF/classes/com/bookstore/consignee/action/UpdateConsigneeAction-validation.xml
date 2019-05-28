@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  "-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">consignee.name</param>
+		<message>收货人姓名不能为空</message>
+	</validator>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">consignee.phone_num</param>
+		<message>收货人手机号不能为空</message>
+	</validator>
+	<validator type="requiredstring" short-circuit="true">
+		<param name="fieldname">consignee.detailed_address</param>
+		<message>具体地址不能为空</message>
+	</validator>
+</validators>

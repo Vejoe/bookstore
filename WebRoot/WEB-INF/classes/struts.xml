@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<!-- 指定action的配置转到Spring的配置文件-->
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<package name="default" extends="struts-default,json-default" >
+			<!-- 定义登录拦截器 -->
+	<!-- 书籍界面这part -->
+		<action name="mainpageAction" class="mainpageAction">
+			<result name="success">/mainpage.jsp</result>
+		</action>
+		
+		<action name="showbookAction" class="showbookAction">
+			<result name="success">/showbook.jsp</result>
+		</action>
+		
+		<action name="showAction" class="showbookAction" method="showbook">
+			<result name="success">/showbook.jsp</result>
+		</action>	
+		<action name="showonebookAction" class="showonebookAction">
+			<result name="success">/showonebook.jsp</result>
+		</action>	
+		<action name="showresultbookAction" class="showresultbookAction">
+			<result name="success">/showresultbook.jsp</result>
+		</action>
+		<action name="collectionAction" class="showresultbookAction" method="collect">
+			<result name="success">/showresultbook.jsp</result>
+		</action>
+		<action name="topAction" class="topAction">
+			<result name="success">/top.jsp</result>
+		</action>
+		<action name="addshoppingcartAction" class="showonebookAction" method="addshoppingcart">
+			<result name="success" type="redirectAction">/showonebookAction?bookid=${bookid}</result>
+		</action>
+		<action name="savecollectionAction" class="showonebookAction" method="collection">
+			<result name="success" type="redirectAction">/showonebookAction?bookid=${bookid}</result>
+		</action>
+		<action name="addCommentAction" class="showonebookAction" method="addComment">
+			<result name="success" type="redirectAction">/showonebookAction?bookid=${bookid}</result>
+		</action>
+		
+		
+		
+	<!-- 用户界面这part -->
+	    <action name="RegisterAction" class="RegisterAction">
+ 			<result name="success">/Customerregister_success.jsp</result>
+ 			<result name="input">/Customerregister.jsp</result>
+ 		</action>
+  		
+  		<action name="LoginAction" class="LoginAction">
+ 			<result name="success" type="redirectAction">${url}</result>
+ 			<result name="input">/Customerlogin.jsp</result>
+ 		</action>
+ 		
+ 		<action name="SecurityCodeImageAction" class="com.bookstore.customer.action.SecurityCodeImageAction">
+	         <result name="success" type="stream">
+		         <param name="contentType">image/jpeg</param>
+		         <param name="inputName">imageStream</param>
+		         <param name="bufferSize">2048</param>
+	         </result>
+      	</action>
+      	
+      	<action name="SecurityCodeAction" class="com.bookstore.customer.action.SecurityCodeAction">
+      	</action>
+      	
+      	<action name="ExtiAction" class="com.bookstore.customer.action.ExtiAction">
+ 			<result name="success" type="redirectAction">${url}</result>
+ 			<result name="input">index.jsp</result>
+ 		</action>
+ 		
+ 		<action name="QueryCustomerBycaccountAction" class="QueryCustomerBycaccountAction">
+ 			<result name="success">/Customerchangepassword2.jsp</result>
+ 			<result name="input">/Customerchangepassword1.jsp</result>
+ 		</action>
+ 		
+ 		<action name="CheckCustomercaccountByphone_numAction" class="com.bookstore.customer.action.CheckCustomercaccountByphone_numAction">
+ 			<result name="success">/Customerchangepassword3.jsp</result>
+ 			<result name="input">/Customerchangepassword2.jsp</result>
+ 		</action>
+ 		
+ 		<action name="ChangepassowrdAction" class="ChangepassowrdAction">
+ 			<result name="success">/Customerchangepassword4.jsp</result>
+ 			<result name="input">/Customerchangepassword3.jsp</result>
+ 		</action>
+ 		
+ 		<action name="GetCustomerDetailBycaccountAction" class="GetCustomerDetailBycaccountAction">
+ 			<result name="success1">/Myself_m1.jsp</result>
+ 			<result name="success2">/Myself_m2.jsp</result>
+ 			<result name="success3">/Myself_m3.jsp</result>
+ 			<result name="success4" type="redirectAction"><param name="actionName">ShowShoppingCartAction</param></result>
+ 			<result name="success5" type="redirectAction"><param name="actionName">ShowOrderAction</param></result>
+ 			<result name="success7">/Myself_m7.jsp</result>
+ 			<result name="input">index.jsp</result>
+ 		</action>
+  		
+  		<action name="ChangeCustomerDetailAction" class="ChangeCustomerDetailAction">
+ 			<result name="success">/Wait.jsp</result>
+ 			<result name="input">/Myself_m2.jsp</result>
+ 		</action>
+ 		
+ 		<action name="ChangepasswordByMtself_m3" class="ChangepasswordByMtself_m3">
+ 			<result name="success">/WaitAndLog.jsp</result>
+ 			<result name="errornumIsThree" type="redirectAction">ExtiAction</result>
+ 			<result name="input">/Myself_m3.jsp</result>
+ 		</action>
+ 		
+ 		<action name="AddMessageAction" class="AddMessageAction">
+ 			<result name="success" type="redirectAction">GetMessageAction</result>
+ 			<result name="input">/Myself_m7.jsp</result>
+ 		</action>
+ 		
+ 		<action name="AddMessageActionByAnonymous" class="AddMessageAction" method="executeIsAnonymous">
+ 			<result name="success" type="redirectAction">${url}</result>
+ 			<result name="input">/Anonymous_message.jsp</result>
+ 		</action>
+ 		
+ 		<action name="GetMessageAction" class="GetMessageAction">
+ 			<result name="success">/Getmessages.jsp</result>
+ 			<result name="input">/Getmessages.jsp</result>
+ 		</action>
+ 		
+ 		<action name="QueryMessageDetailAction" class="QueryMessageDetailAction">
+ 			<result name="success">/MessageDetail.jsp</result>
+ 			<result name="input">/MessageDetail.jsp</result>
+ 		</action>
+  		
+  		<!-- Consignee模块 -->
+  		
+  		<action name="GetCustomerConsigneeDetailBycaccountAction" class="GetCustomerConsigneeDetailBycaccountAction">
+ 			<result name="success">/Myself_m6.jsp</result>
+ 			<result name="add">/Addconsignee.jsp</result>
+ 			<result name="input">/Myself_m6.jsp</result>
+ 		</action>
+ 		
+ 		<action name="AddConsigneeAction" class="AddConsigneeAction">
+ 			<result name="success" type="redirectAction">
+ 				<param name="actionName">GetCustomerConsigneeDetailBycaccountAction</param>
+ 			</result>
+ 			<result name="input">/Addconsignee.jsp</result>
+ 		</action>
+ 		
+ 		<action name="DeleteConsigneeAction" class="DeleteConsigneeAction">
+ 			<result name="success" type="redirectAction">
+ 				<param name="actionName">GetCustomerConsigneeDetailBycaccountAction</param>
+ 			</result>
+ 			<result name="input">/Addconsignee.jsp</result>
+ 		</action>
+  		
+  		<action name="QueryConsigneeDetailAction" class="QueryConsigneeDetailAction">
+ 			<result name="success">/Getconsigneedetail.jsp</result>
+ 			<result name="input" type="redirectAction">
+ 				<param name="actionName">GetCustomerConsigneeDetailBycaccountAction</param>
+ 			</result>
+ 		</action>
+ 		
+ 		<action name="UpdateConsigneeAction" class="UpdateConsigneeAction">
+ 			<result name="success" type="redirectAction">
+ 				<param name="actionName">GetCustomerConsigneeDetailBycaccountAction</param>
+ 			</result>
+ 			<result name="input">/Getconsigneedetail.jsp</result>
+ 		</action>
+ 		
+ 		
+ 		<!--Manager  -->
+ 		
+ 		<action name="managerloginAction" class="managerloginAction" >
+			<result name="success">/manager/main/mian.jsp</result>
+			<result name="input">/manager/login.jsp</result>
+		</action>
+		
+		<action name="showAllManager" class="managerAction" method="showAllManager" >
+			<result name="success">/manager/main/showmanager.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="showdDegreeManager" class="managerAction" method="showdDegreeManager" >
+			<result name="success">/manager/main/showmanagerbydegree.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="queryNameManager" class="managerAction" method="queryNameManager" >
+			<result name="success">/manager/main/showmanagerbyname.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="queryManagerById" class="managerAction" method="queryManagerById" >
+			<result name="success">/manager/main/managerdetail.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="updateManager" class="managerAction" method="updateManager" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+	
+		<action name="deleteManager" class="managerAction" method="deleteManager" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="addManager" class="managerAction" method="addManager" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/addmanager.jsp</result>
+		</action>
+		
+		<action name="ChangePassWord" class="managerAction" method="ChangePassWord" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/changepasssword.jsp</result>
+		</action>
+		
+		<action name="ManagerPersonInform" class="managerAction" method="ManagerPersonInform" >
+			<result name="success">/manager/main/managerpersoninfo.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="ManagerExitAction" class="managerAction" method="ManagerExitAction" >
+			<result name="success">/manager/login.jsp</result>
+			<result name="input">/manager/login.jsp</result>
+		</action>
+		
+		<action name="updateManagerPersonal" class="managerAction" method="updateManagerPersonal" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="showAllOrder" class="managerorderAction" method="showAllOrder" >
+			<result name="success">/manager/main/showorder.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="queryAccountOrder" class="managerorderAction" method="queryAccountOrder" >
+			<result name="success">/manager/main/showorderbyaccount.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="todealOrder" class="managerorderAction" method="todealOrder" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="todealOrder2" class="managerorderAction" method="todealOrder2" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="todealOrder3" class="managerorderAction" method="todealOrder3" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="toOrderdetail" class="managerorderAction" method="toOrderdetail" >
+			<result name="success">/manager/main/showorderdetail.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="deleteOrder" class="managerorderAction" method="deleteOrder" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="showAllMessage" class="managermessageAction" method="showAllMessage" >
+			<result name="success">/manager/main/showmessage.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="queryMessageTitle" class="managermessageAction" method="queryMessageTitle" >
+			<result name="success">/manager/main/querymessagetitle.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="deleteMessage" class="managermessageAction" method="deleteMessage" >
+			<result name="success">/manager/main/success.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		<action name="showMessageDetail" class="managermessageAction" method="showMessageDetail" >
+			<result name="success">/manager/main/showmessagedetail.jsp</result>
+			<result name="input">/manager/main/fail.jsp</result>
+		</action>
+		
+		
+		<!-- addproduct -->
+		<action name="addBookTypeAction" class="addBookTypeAction">
+			<result name="success" type="redirectAction">
+                <param name="actionName">queryBookTypeAction</param>
+            	<param name="namespace">/</param>
+            </result>
+			<result name="input">/addBookTypeError.jsp</result>
+		</action>
+
+		<action name="addBookAction" class="addBookAction">
+			<interceptor-ref name="fileUpload">     
+            <!-- 配置允许上传的文件类型是图片类型，多个用","分隔 -->                      
+            <param name="allowedTypes">
+                image/bmp,image/png,image/gif,image/jpeg,
+                image/jpg,image/x-png,image/pjpeg     
+            </param>                     
+            <!-- 配置允许上传的文件大小，单位字节,本例为100KB -->     
+            <param name="maximumSize">102400</param>     
+	        </interceptor-ref>
+	        <interceptor-ref name="defaultStack"/>
+			<result name="success" type="redirectAction">
+                <param name="actionName">queryBookAction</param>
+            	<param name="namespace">/</param>
+            </result>
+			<result name="input">/manager/main/addbook.jsp</result>
+		</action>
+
+		<action name="queryBookTypeAction" class="queryBookTypeAction">
+			<result name="success">/manager/main/addbook.jsp</result>
+			<result name="input">/queryBookTypeError.jsp</result>
+		</action>
+
+		<action name="queryBookAction" class="queryBookAction">
+			<!-- <result name="success">/deleteBook.jsp</result> -->
+			<result name="success">/manager/main/showbook.jsp</result> 
+			<result name="input">/queryBookError.jsp</result>
+		</action>
+
+		<action name="deleteBookAction" class="deleteBookAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">queryBookAction</param>
+            	<param name="namespace">/</param>
+            </result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">queryBookAction</param>
+            	<param name="namespace">/</param>
+            </result>
+		</action>
+
+		<action name="queryBookByIDAction" class="queryBookByIDAction">
+			<result name="success">/manager/main/changebook.jsp</result>
+			<result name="input">/manager/main/showbook.jsp</result>
+			
+		</action>
+	
+		<action name="changeBookAction" class="changeBookAction">
+			<result name="success">/manager/main/showbook.jsp</result>
+			<result name="input">/manager/main/changebook.jsp</result>
+		</action>
+
+
+		<action name="queryCustomerAction" class="queryCustomerAction">
+			<result name="success">/manager/main/showcustomer.jsp</result>
+			<result name="input">/manager/main/showcustomer.jsp</result>
+		</action>
+
+		<action name="queryCustomerByIDAction" class="queryCustomerByIDAction">
+			<result name="success">/manager/main/changecustomer.jsp</result>
+			<result name="input">/manager/main/showcustomer.jsp</result>
+		</action>
+
+		<action name="changeCINFAction" class="changeCINFAction">
+			<result name="success">/manager/main/showcustomer.jsp</result>
+			<result name="input">/manager/main/changecustomer.jsp</result>
+		</action>
+<!-- 购物车模块 -->
+ 		<action name="UpdateShoppingCartAction" class="UpdateShoppingCartAction">
+ 			<result name="success" type="redirectAction">
+ 				<param name="actionName">ShowShoppingCartAction</param>
+ 			</result>	
+			<result name="input">/shoppingcart.jsp</result>
+		</action>
+		
+		<action name="DownShoppingCartAction" class="DownShoppingCartAction">
+ 			<result name="success" type="redirectAction">
+ 				<param name="actionName">ShowShoppingCartAction</param>
+ 			</result>
+			<result name="input" type="redirectAction">
+ 				<param name="actionName">ShowShoppingCartAction</param>
+ 			</result>
+		</action>
+		
+		<action name="DelAllShoppingCartAction" class="DelAllShoppingCartAction">
+ 			<result name="success" type="redirectAction">
+ 				<param name="actionName">ShowShoppingCartAction</param>
+ 			</result>
+			<result name="input">/shoppingcart.jsp</result>
+
+		</action>
+		
+		<action name="DeleteShoppingCartAction" class="DeleteShoppingCartAction">
+ 			<result name="success" type="redirectAction">
+ 				<param name="actionName">ShowShoppingCartAction</param>
+ 			</result>
+			<result name="input">/shoppingcart.jsp</result>
+		</action>
+		
+		<action name="ShowShoppingCartAction" class="ShowShoppingCartAction">
+			<result name="success">/shoppingcart.jsp</result>
+			<result name="input">/emptyshoppingcart.jsp</result>
+		</action>
+
+ 		<!-- 订单 -->
+ 		<action name="BuildOrderAtion" class="BuildOrderAtion">
+			<result name="success">/Order.jsp</result>
+			<result name="input">/shoppingcart.jsp</result>
+		</action>
+
+ 		<action name="AddOrderAction" class="AddOrderAction">
+		<result name="success" type="redirectAction">
+ 				<param name="actionName">ShowOrderAction</param>
+ 		</result>
+			<result name="input">/Order.jsp</result>
+		</action>
+		
+		<action name="ShowOrderAction" class="ShowOrderAction">
+			<result name="success">/showorder.jsp</result>
+			<result name="input">/emporder.jsp</result>
+		</action>		
+		
+		
+		<action name="ShowOrderdetailsAction" class="ShowOrderdetailsAction">
+			<result name="success">/showorderdetail.jsp</result>
+			<result name="input">/showorderdetail.jsp</result>
+		</action>
+		
+		<action name="ChangeOrderAction" class="ChangeOrderAction">
+		<result name="success" type="redirectAction">
+ 				<param name="actionName">ShowOrderAction</param>
+ 		</result>
+		</action>
+		
+				<action name="ReturnOrderAction" class="ReturnOrderAction">
+			<result name="success" type="redirectAction">
+ 				<param name="actionName">ShowOrderAction</param>
+ 		</result>
+		</action>		
+		
+	</package>
+</struts>

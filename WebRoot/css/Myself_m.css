@@ -1,0 +1,28 @@
+*{
+	font-size:15px;
+	font-family:»ªÎÄÏ¸ºÚ;
+}
+.errorMessage{
+list-style-type: none;
+margin-bottom:0%;
+}
+	.sign{
+	color:red;
+}
+#btntr,#querytr{
+	text-align:center;
+}
+#Rbtn,#btn,#Qbtn{
+	 background:#ff2832;
+	 color:white;
+	 border:hidden;
+	 font-size:17px;
+	 width:17%;
+	 height:30px;
+	 cursor:pointer;
+	 border-radius:10px;
+}
+#Qbtn{
+	text-align:center;
+	width:30%;
+}

@@ -1,0 +1,36 @@
+*{
+	font-family:»ªÎÄÏ¸ºÚ;
+}
+body{
+	background:#f6f9fb;
+}
+.errorMessage{
+	list-style-type: none;
+	margin-bottom:0%;
+	}
+.div{
+	margin-left:20%;
+	text-align:center;
+	width:60%;
+	background:white;
+	box-shadow: -15px 15px 5px #ebeeef;
+}
+.table{
+	margin-left:25%;
+}
+.tr{
+	height:40px;
+}
+.sign{
+	color:red;
+}
+#btn{
+	 background:#ff2832;
+	 color:white;
+	 border:hidden;
+	 border-radius:50px;
+	 font-size:20px;
+	 width:100%;
+	 height:40px;
+	 cursor:pointer;
+}

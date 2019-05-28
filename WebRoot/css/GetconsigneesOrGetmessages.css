@@ -1,0 +1,40 @@
+*{
+	font-size:15px;
+}
+th{
+	color:blue;
+}
+span{
+	color:red;
+	font-size:5px;
+}
+.span{
+	color:black;
+	font-size:15px;
+}
+.btn,#btn3,#btn4{
+	background:#ff2832;
+	color:white;
+	border:hidden;
+	font-size:15px;
+	width:45px;
+	height:25px;
+	cursor:pointer;
+	border-radius:4px;
+	font-family:»ªÎÄÏ¸ºÚ;
+}
+#btn3{
+	width:100px;
+	height:30px;
+	font-size:17px;
+	border-radius:5px;
+}
+#btn4{
+	width:35px;
+	height:25px;
+	font-size:15px;
+	border-radius:20px;
+}
+#div{
+	font-size:12px;
+}

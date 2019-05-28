@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bookstore.product.model.Comment" table="Comment">
+		<id name="id" column="id" > <!-- 配置主键 -->
+			<generator class="native"/>
+		</id>
+		<!-- 配置其他属性 -->
+		<property name="bookid"/>
+		<property name="cid"/>
+		<property name="cname"/>		
+		<property name="commentdate"/>
+		<property name="commentcontent" length="100"/>		
+		
+	</class>
+</hibernate-mapping>

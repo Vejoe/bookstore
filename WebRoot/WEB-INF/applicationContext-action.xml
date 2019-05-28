@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           				http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	
+	<aop:aspectj-autoproxy /> <!-- 启用@AspectJ配置 -->
+	
+	<!-- product模块action的配置 -->
+	<bean id="mainpageAction" class="com.bookstore.product.controler.mainpageAction" scope="prototype">
+		<property name="productservice"> 
+			<ref bean="productserviceImpl"/> 
+		</property>
+	</bean>
+	
+	<bean id="showbookAction" class="com.bookstore.product.controler.showbookAction" scope="prototype">
+		<property name="productservice"> 
+			<ref bean="productserviceImpl"/> 
+		</property>
+	</bean>
+
+	<bean id="showonebookAction" class="com.bookstore.product.controler.showonebookAction" scope="prototype">
+		<property name="productservice"> 
+			<ref bean="productserviceImpl"/> 
+		</property>
+	</bean>
+	
+	<bean id="showresultbookAction" class="com.bookstore.product.controler.showresultbookAction" scope="prototype">
+		<property name="productservice"> 
+			<ref bean="productserviceImpl"/> 
+		</property>
+	</bean>
+	
+	<bean id="topAction" class="com.bookstore.product.controler.topAction" scope="prototype">
+		<property name="productservice"> 
+			<ref bean="productserviceImpl"/> 
+		</property>
+	</bean>
+	
+
+	
+	<!-- Customer模块 -->
+	<bean id="RegisterAction" class="com.bookstore.customer.action.RegisterAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="LoginAction" class="com.bookstore.customer.action.LoginAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="BeforeLogin" class="com.bookstore.customer.aop.BeforeLogin" scope="prototype" />
+	
+	<bean id="AfterLogin" class="com.bookstore.customer.aop.AfterLogin" scope="prototype" autowire="byType"/>
+	
+	<bean id="QueryCustomerBycaccountAction" class="com.bookstore.customer.action.QueryCustomerBycaccountAction" scope="prototype" autowire="byType"/>	
+	
+	<bean id="ChangepassowrdAction" class="com.bookstore.customer.action.ChangepassowrdAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="GetCustomerDetailBycaccountAction" class="com.bookstore.customer.action.GetCustomerDetailBycaccountAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="ChangeCustomerDetailAction" class="com.bookstore.customer.action.ChangeCustomerDetailAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="ChangepasswordByMtself_m3" class="com.bookstore.customer.action.ChangepasswordByMtself_m3" scope="prototype" autowire="byType"/>
+	
+	<bean id="AddMessageAction" class="com.bookstore.customer.action.AddMessageAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="GetMessageAction" class="com.bookstore.customer.action.GetMessageAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="QueryMessageDetailAction" class="com.bookstore.customer.action.QueryMessageDetailAction" scope="prototype" autowire="byType"/>
+	
+	<!-- Consignee模块 -->
+	
+	<bean id="GetCustomerConsigneeDetailBycaccountAction" class="com.bookstore.consignee.action.GetCustomerConsigneeDetailBycaccountAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="AddConsigneeAction" class="com.bookstore.consignee.action.AddConsigneeAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="DeleteConsigneeAction" class="com.bookstore.consignee.action.DeleteConsigneeAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="QueryConsigneeDetailAction" class="com.bookstore.consignee.action.QueryConsigneeDetailAction" scope="prototype" autowire="byType"/>
+	
+	<bean id="UpdateConsigneeAction" class="com.bookstore.consignee.action.UpdateConsigneeAction" scope="prototype" autowire="byType"/>
+	
+	
+
+	<!-- Manager模块 -->
+	<bean id="managerloginAction" class="com.bookstore.manager.action.ManagerLoginAction" autowire="byType" scope="prototype"/>
+	<bean id="managerAction" class="com.bookstore.manager.action.ManagerAction" autowire="byType" scope="prototype"/>
+	<bean id="managerorderAction" class="com.bookstore.manager.action.ManagerOrderAction" autowire="byType" scope="prototype"/>
+	<bean id="managermessageAction" class="com.bookstore.manager.action.ManagerMessageAction" autowire="byType" scope="prototype"/>
+	
+	<!-- addproduct模块 -->
+	<bean id="addBookTypeAction" class="com.bookstore.backgroundSys.bookM.actions.addBookTypeAction" autowire="byType" scope="prototype"/>
+	<bean id="addBookAction" class="com.bookstore.backgroundSys.bookM.actions.addBookAction" autowire="byType" scope="prototype"/>
+	<bean id="queryBookTypeAction" class="com.bookstore.backgroundSys.bookM.actions.queryBookTypeAction" autowire="byType" scope="prototype"/>
+	<bean id="queryBookAction" class="com.bookstore.backgroundSys.bookM.actions.queryBookAction" autowire="byType" scope="prototype"/>
+	<bean id="deleteBookAction" class="com.bookstore.backgroundSys.bookM.actions.deleteBookAction" autowire="byType" scope="prototype"/>
+	<bean id="queryBookByIDAction" class="com.bookstore.backgroundSys.bookM.actions.queryBookByIDAction" autowire="byType" scope="prototype"/>
+	<bean id="changeBookAction" class="com.bookstore.backgroundSys.bookM.actions.changeBookAction" autowire="byType" scope="prototype"/>
+	<bean id="queryCustomerAction" class="com.bookstore.backgroundSys.customerM.actions.queryCustomerAction" autowire="byType" scope="prototype"/>
+	<bean id="queryCustomerByIDAction" class="com.bookstore.backgroundSys.customerM.actions.queryCustomerByIDAction" autowire="byType" scope="prototype"/>
+	<bean id="changeCINFAction" class="com.bookstore.backgroundSys.customerM.actions.changeCustomerINFAction" autowire="byType" scope="prototype"/>
+	
+	<!-- shoppingcart -->
+	<bean id="UpdateShoppingCartAction" class="com.bookstore.shoppingcart.action.UpdateShoppingCartAction" scope="prototype" autowire="byType"/>
+ 	<bean id="DelAllShoppingCartAction" class="com.bookstore.shoppingcart.action.DelAllShoppingCartAction" scope="prototype" autowire="byType"/> 
+  	<bean id="DeleteShoppingCartAction" class="com.bookstore.shoppingcart.action.DeleteShoppingCartAction" scope="prototype" autowire="byType"/> 
+  	<bean id="ShowShoppingCartAction" class="com.bookstore.shoppingcart.action.ShowShoppingCartAction"  scope="prototype" autowire="byType"/> 
+  	<bean id="showshoppingAction" class="com.bookstore.shoppingcart.action.ShowShoppingCartAction"  scope="prototype" autowire="byType"/> 
+  	<bean id="DownShoppingCartAction" class="com.bookstore.shoppingcart.action.DownShoppingCartAction" scope="prototype" autowire="byType"/> 
+	<bean id="BuildOrderAtion" class="com.bookstore.shoppingcart.action.BuildOrderAtion" scope="prototype" autowire="byType"/>
+	<!--Order模块-->
+	<bean id="AddOrderAction" class="com.bookstore.order.action.AddOrderAction" scope="prototype" autowire="byType"/>
+	<bean id="ShowOrderAction" class="com.bookstore.order.action.ShowOrderAction" scope="prototype" autowire="byType"/>
+	<bean id="ShowOrderdetailsAction" class="com.bookstore.order.action.ShowOrderdetailsAction" scope="prototype" autowire="byType"/>
+	<bean id="ChangeOrderAction" class="com.bookstore.order.action.ChangeOrderAction" scope="prototype" autowire="byType"/>
+	<bean id="ReturnOrderAction" class="com.bookstore.order.action.ReturnOrderAction" scope="prototype" autowire="byType"/>	
+</beans>
